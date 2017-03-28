@@ -1,0 +1,9 @@
+{
+	"scripts":{
+		"build" : "wcf --dev --devServer"
+	},
+	"dependencies": {
+     "webpack": "^2.2.0",
+     "webpack-dev-server": "^2.4.1"
+  }
+}

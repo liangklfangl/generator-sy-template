@@ -1,0 +1,37 @@
+{
+	"scripts":{
+		 "devServer" : "wcf --dev --devServer --config ./cfg/devServer.js --htmlTemplate ./src/index.html",
+		 "watch" : "wcf --dev --watch --config ./cfg/watch.js --htmlTemplate ./src/index.html",
+     "test": "cross-env NODE_ENV=test karma start",
+     "test:watch": "cross-env NODE_ENV=test karma start --autoWatch=true --singleRun=false --reporters=mocha,coverage"
+	},
+	"devDependencies": {
+     "webpack": "^2.2.0",
+     "webpack-dev-server": "^2.4.1",
+     "webpackcc": "2.0.19",
+     "karma": "^1.0.0",
+     "karma-chai": "^0.1.0",
+     "karma-coverage": "^1.0.0",
+     "karma-junit-reporter": "^1.0.0",
+     "karma-mocha": "^1.0.1",
+     "karma-mocha-reporter": "^2.0.3",
+     "karma-phantomjs-launcher": "^1.0.4",
+     "karma-sinon": "^1.0.5",
+     "karma-sourcemap-loader": "^0.3.7",
+     "karma-webpack": "^1.8.1",
+     "mocha": "^3.0.0",
+     "phantomjs-prebuilt": "^2.1.7",
+     "rimraf": "^2.5.2",
+     "sinon": "^1.17.3"
+  },
+  "dependencies" :{
+   "normalize.css": "^4.0.0",
+   "react": "^15.4.2",
+   "react-dom": "^15.4.2",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "cross-env": "^3.1.0"
+  },
+  "entry" :{
+    "index" : "./src/client.js"
+  }
+}
