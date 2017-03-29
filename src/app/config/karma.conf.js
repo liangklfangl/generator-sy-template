@@ -7,6 +7,7 @@ const program = {
    karma:true,
    config : path.join(__dirname,"./cfg/test.js")
 }
+//Get webpack common configuration
 const webpackConfig = build(program,function(){});
 
 module.exports = function karmaConfig(config) {
@@ -58,6 +59,8 @@ module.exports = function karmaConfig(config) {
     }
   });
 };
+
+
 
 
 

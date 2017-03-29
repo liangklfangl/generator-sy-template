@@ -3,13 +3,10 @@ import utils from '../app/utils/all';
 const C = utils.constants;
 import path from "path";
 const getAllSettingsFromComponentName = utils.yeoman.getAllSettingsFromComponentName;
-
-
 class ComponentGenerator extends Generators {
 
   constructor(args, options) {
     super(args, options);
-
     /**
      * Flag indicating whether the component should be created with associated style files.
      * @type {boolean}
@@ -102,7 +99,7 @@ class ComponentGenerator extends Generators {
     const settings =
       getAllSettingsFromComponentName(
         this.options["name"],
-        //this.argument('name')的值
+        //this.argument('name')
         this.config.get('style'),
         //style language of `less/scss` etc. this.config.set is invoked in `app` generator
         this.useCssModules,
@@ -116,27 +113,27 @@ class ComponentGenerator extends Generators {
       );
      
     // Create the `style` template. Skipped if nostyle is set as command line flag
-    // if(this.useStyles) {
-    //   this.fs.copyTpl(
-    //     this.templatePath(`styles/Component${settings.style.suffix}`),
-    //     this.destinationPath(settings.style.path + settings.style.fileName),
-    //     settings
-    //   );
-    // }
- console.log('>>>>>>>>>>>>>>>>>',this.templatePath(`components/${this.componentTemplateName}`));
+    if(this.useStyles) {
+      this.fs.copyTpl(
+        this.templatePath(`styles/Component${settings.style.suffix}`),
+        this.destinationPath(settings.style.path + settings.style.fileName),
+        settings
+      );
+    }
     // Create the component
     this.fs.copyTpl(
       this.templatePath(`components/${this.componentTemplateName}`).split(path.sep).join('/'),
       this.destinationPath(settings.component.path + settings.component.fileName),
+      //`setting.component.path` is path to lay component.~path.normalize(`${componentPath.path}/${componentPartPath}/`)
       settings
     );
 
     // Create the unit test
-    // this.fs.copyTpl(
-    //   this.templatePath(`${this.generatorVersion}/tests/Base.js`),
-    //   this.destinationPath(settings.test.path + settings.test.fileName),
-    //   settings
-    // );
+    this.fs.copyTpl(
+      this.templatePath(`./tests/Base.js`),
+      this.destinationPath(settings.test.path + settings.test.fileName),
+      settings
+    );
   }
 }
 

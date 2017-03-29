@@ -1,13 +1,16 @@
-const build = require('webpackcc/lib/build');
-const path = require('path');
-const util = require('util');
-const program = {
-   cwd : process.cwd(),
-   dev : true,
-   karma:true,
-   config : path.join(__dirname,"./cfg/test.js")
-}
-const webpackConfig = build(program,function(){});
+'use strict';
+
+var build = require('webpackcc/lib/build');
+var path = require('path');
+var util = require('util');
+var program = {
+  cwd: process.cwd(),
+  dev: true,
+  karma: true,
+  config: path.join(__dirname, "./cfg/test.js")
+};
+//Get webpack common configuration
+var webpackConfig = build(program, function () {});
 
 module.exports = function karmaConfig(config) {
   config.set({
@@ -58,14 +61,3 @@ module.exports = function karmaConfig(config) {
     }
   });
 };
-
-
-
-
-
-
-
-
-
-
-

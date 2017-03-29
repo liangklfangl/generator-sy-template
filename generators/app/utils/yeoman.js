@@ -50,7 +50,8 @@ var getAllSettingsFromComponentName = function getAllSettingsFromComponentName(c
   // slugify("Un éléphant à l\'orée du bois");
   // => "un-elephant-a-l-oree-du-bois"
   // (3)detail: https://github.com/epeli/underscore.string
-  // (4) my/namespaced/components/name6 returned
+  // (4) my/namespaced/components/name6 returned, camelize("moz-transform");
+  // => "mozTransform"
   var componentParts = cleanedPaths.split('/');
   var componentBaseName = _.capitalize(componentParts.pop());
   //Only `filename` part
@@ -76,9 +77,9 @@ var getAllSettingsFromComponentName = function getAllSettingsFromComponentName(c
   //Get `test` part of `path`
   var settings = {
     style: {
-      webpackPath: './' + componentBaseName.toLowerCase() + (useCssModules ? '.module' : '') + styleSettings.suffix,
+      webpackPath: ('./' + componentBaseName.toLowerCase() + (useCssModules ? '.module' : '') + styleSettings.suffix).split(path.sep).join("/"),
       //`${componentBaseName}` is Filename of css file, if cssmodule enabled, we add `.module`. suffix is equal to postfix 
-      path: path.normalize(componentPath.path + '/' + componentPartPath + '/'),
+      path: path.normalize(componentPath.path + '/' + componentPartPath + '/').split(path.sep).join("/"),
       //relative to `src` folder configurd in configopts.json now!
       fileName: '' + componentBaseName.toLowerCase() + (useCssModules ? '.module' : '') + styleSettings.suffix,
       //fileName part will not include `./`
@@ -89,20 +90,24 @@ var getAllSettingsFromComponentName = function getAllSettingsFromComponentName(c
       //styleSettings.suffix from `style` part of configopts.json
     },
     component: {
-      webpackPath: path.normalize('components/' + componentPartPath + '/' + componentBaseName + '.js'),
-      //`${componentBaseName}` is Filename of component
-      //`${componentPartPath}` is path part 
-      path: path.normalize(componentPath.path + '/' + componentPartPath + '/'),
+      webpackPath: path.normalize('components/' + componentPartPath + '/' + componentBaseName + '.js').split(path.sep).join("/"),
+      //import <%= component.className %> from '<%= component.webpackPath %>';
+      //Here is `component.webpackPath` means
+      path: path.normalize(componentPath.path + '/' + componentPartPath + '/').split(path.sep).join("/"),
       //Is relative to componentPath.path configured now!
+      //`componentPath.path` is `src/components`
+      //`componentPartPath` is  what you typed in command cli with name eliminated
       fileName: componentBaseName + '.js',
-      //Filename of component
+      //`filename` is closely relevant to `componentBaseName`
       className: '' + componentBaseName,
-      //FileName will be used as component`s class name
+      //`className` is name of component
+      //shallow(<<%= component.className %> />)
       classBase: isPure ? 'React.PureComponent' : 'React.Component',
       //${isPure} or not. Which class we will extend to of our Component
       displayName: '' + componentFullName,
       //_.classify(_.replaceAll(componentName, '/', '_'));
       //DisplayName of our React Component, Each Component has a displayName
+      //`displayName` of component, Name.displayName = 'MyNamespacedComponentsName';
       suffix: '.js'
       //suffix is `.js` of component
     },
@@ -113,7 +118,6 @@ var getAllSettingsFromComponentName = function getAllSettingsFromComponentName(c
       //FileName of TestCase
     }
   };
-  console.log('>>>>>>>>>>>>>>>>>>>', settings);
   return settings;
 };
 
@@ -132,7 +136,7 @@ var getCleanedPathName = function getCleanedPathName(path, suffix) {
   var pathArray = path.split('/');
 
   // Build the full components name. If path is "src/component/button+suffix" will be transformed to 
-  // Src/Component/Button
+  // src/component/button
   return pathArray.map(function (path) {
     return _.camelize(_.slugify(_.humanize(path)));
   }).join('/') + _.capitalize(suffix);
