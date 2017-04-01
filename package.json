@@ -1,5 +1,5 @@
 {
-  "name": "generator-react-template",
+  "name": "generator-sy-template",
   "version": "0.0.1",
   "description": "Generate tree structure of project",
   "main": "generators/app/index.js",

@@ -12,6 +12,8 @@ module.exports = {
 		'react/lib/ReactContext': 'window',
 		'sinon': 'window.sinon'
 	},
+	//Detail of externals will show:https://webpack.js.org/configuration/externals/#components/sidebar/sidebar.jsx
+	//Externals will exclude some files from bundle but from library 
 	resolve: {
 		alias: {
 			actions: path.join(srcPath, '/actions/').split(path.sep).join("/"),

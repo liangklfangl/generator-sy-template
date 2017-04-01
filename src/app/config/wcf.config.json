@@ -1,7 +1,8 @@
 {
 	"scripts":{
-		 "devServer" : "wcf --dev --devServer --config ./cfg/devServer.js --htmlTemplate ./src/index.html",
-		 "watch" : "wcf --dev --watch --config ./cfg/watch.js --htmlTemplate ./src/index.html",
+	 "devServer" : "wcf --dev --devServer --config ./cfg/devServer.js --htmlTemplate ./src/index.html",
+	 "watch" : "wcf --dev --watch --config ./cfg/watch.js --htmlTemplate ./src/index.html",
+     "dist" : "wcf --dev --config ./cfg/dist.js --htmlTemplate ./src/index.html",
      "test": "cross-env NODE_ENV=test karma start",
      "test:watch": "cross-env NODE_ENV=test karma start --autoWatch=true --singleRun=false --reporters=mocha,coverage"
 	},

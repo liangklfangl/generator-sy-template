@@ -1,9 +1,14 @@
  {
     "presets": [
-
+     
     ],
     "plugins": [
-       "react-hot-loader/babel"
+       "react-hot-loader/babel",
+       //We will not configure this loader in webpack to handle .js/.jsx file but in .babelrc
+       "transform-object-rest-spread",
+       //Detail :https://www.npmjs.com/package/babel-plugin-transform-object-rest-spread
+       "transform-decorators-legacy"
+       //In detail ：https://github.com/liangklfang/babel-plugin-transform-decorators-legacy
     ]
   }
 
