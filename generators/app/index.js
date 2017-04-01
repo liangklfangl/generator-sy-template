@@ -164,6 +164,7 @@ var AppGenerator = function (_Generators) {
       this.fs.copy(_path2.default.resolve(__dirname, "./config/index.html").split(_path2.default.sep).join("/"), this.destinationPath() + "/src/index.html");
       this.fs.copy(_path2.default.resolve(__dirname, "./config/.babelrc").split(_path2.default.sep).join("/"), this.destinationPath() + "/.babelrc");
       this.fs.copy(_path2.default.resolve(__dirname, "./config/karma.conf.js").split(_path2.default.sep).join("/"), this.destinationPath() + "/karma.conf.js");
+      this.fs.copy(_path2.default.resolve(__dirname, "./config/.eslintrc.js").split(_path2.default.sep).join("/"), this.destinationPath() + "/.eslintrc.js");
       //mkdirp `cfg` and remove config files to it
       (0, _mkdirp2.default)(cwd + "/cfg", function (err) {
         _util2.default.bulkDirectory(_path2.default.join(__dirname, "config"), cwd + "/cfg", _this3, ['webpack.config.js']);
@@ -182,7 +183,6 @@ var AppGenerator = function (_Generators) {
           for (var _iterator = items[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
             var item = _step.value;
 
-            console.log('>>>>>>>>>>>', item);
             // Copy all items to our root
             var fullPath = _path2.default.join(baseRootPath, item).split(_path2.default.sep).join("/");
             //Special file in react-webpack-template folder
@@ -197,7 +197,7 @@ var AppGenerator = function (_Generators) {
               //we use our own webpack.config.js template file
               if (item === '.npmignore' /* || item === 'webpack.config.js'*/) {
                   _this3.fs.copyTpl(_this3.templatePath(item), _this3.destinationPath(".gitignore"));
-                } else if (item == 'package.json' || item == "karma.conf.js" || item == "webpack.config.js" || item.indexOf("index.html") != -1 || item == ".babelrc") {
+                } else if (item == 'package.json' || item == ".eslintrc" || item == "karma.conf.js" || item == "webpack.config.js" || item.indexOf("index.html") != -1 || item == ".babelrc") {
                 //package.json will not override!
                 continue;
               } else {

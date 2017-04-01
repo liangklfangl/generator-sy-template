@@ -114,6 +114,7 @@ class AppGenerator extends Generators {
     this.fs.copy(path.resolve(__dirname,"./config/index.html").split(path.sep).join("/"),this.destinationPath()+"/src/index.html");
     this.fs.copy(path.resolve(__dirname,"./config/.babelrc").split(path.sep).join("/"),this.destinationPath()+"/.babelrc");
     this.fs.copy(path.resolve(__dirname,"./config/karma.conf.js").split(path.sep).join("/"),this.destinationPath()+"/karma.conf.js");
+    this.fs.copy(path.resolve(__dirname,"./config/.eslintrc.js").split(path.sep).join("/"),this.destinationPath()+"/.eslintrc.js");
     //mkdirp `cfg` and remove config files to it
     mkdirp(cwd+"/cfg",(err) =>{
        fileUtil.bulkDirectory(path.join(__dirname,"config"),cwd+"/cfg",this,['webpack.config.js']);
@@ -125,7 +126,6 @@ class AppGenerator extends Generators {
        //You can overwrite this default by using generator.sourceRoot('new/template/path').
        //`SourceRoot` here is const baseRootPath = path.join(path.dirname(require.resolve('react-webpack-template')));
       for(let item of items) {
-        console.log('>>>>>>>>>>>',item);
         // Copy all items to our root
         let fullPath = path.join(baseRootPath, item).split(path.sep).join("/");
         //Special file in react-webpack-template folder
@@ -146,7 +146,7 @@ class AppGenerator extends Generators {
                this.templatePath(item),
                this.destinationPath(".gitignore")
               );
-          } else if(item =='package.json'|| item =="karma.conf.js" ||item =="webpack.config.js" || item.indexOf("index.html")!=-1 || item==".babelrc"){
+          } else if(item =='package.json'|| item==".eslintrc"||item =="karma.conf.js" ||item =="webpack.config.js" || item.indexOf("index.html")!=-1 || item==".babelrc"){
             //package.json will not override!
             continue;
           } else{

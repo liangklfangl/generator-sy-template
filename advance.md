@@ -45,3 +45,7 @@ const baseRootPath = path.join(path.dirname(require.resolve('react-webpack-templ
 #如何使用package.json来配置让用户全局安装
 
 #默认添加一个entry到package.json中
+
+#config下不能直接使用config加载test.js而是要区别不同的config
+
+#关于external多看看这个

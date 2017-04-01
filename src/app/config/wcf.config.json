@@ -1,9 +1,42 @@
 {
 	"scripts":{
-		"build" : "wcf --dev --devServer"
+		 "devServer" : "wcf --dev --devServer --config ./cfg/devServer.js --htmlTemplate ./src/index.html",
+		 "watch" : "wcf --dev --watch --config ./cfg/watch.js --htmlTemplate ./src/index.html",
+     "test": "cross-env NODE_ENV=test karma start",
+     "test:watch": "cross-env NODE_ENV=test karma start --autoWatch=true --singleRun=false --reporters=mocha,coverage"
 	},
-	"dependencies": {
+	"devDependencies": {
+     "eslint": "^3.18.0",
+     "eslint-config-airbnb": "^14.1.0",
+     "eslint-plugin-import": "^2.2.0",
      "webpack": "^2.2.0",
-     "webpack-dev-server": "^2.4.1"
+     "webpack-dev-server": "^2.4.1",
+     "karma": "^1.0.0",
+     "karma-chai": "^0.1.0",
+     "karma-coverage": "^1.0.0",
+     "karma-junit-reporter": "^1.0.0",
+     "karma-mocha": "^1.0.1",
+     "karma-mocha-reporter": "^2.0.3",
+     "karma-phantomjs-launcher": "^1.0.4",
+     "karma-sinon": "^1.0.5",
+     "karma-sourcemap-loader": "^0.3.7",
+     "karma-webpack": "^1.8.1",
+     "mocha": "^3.0.0",
+     "react": "^15.3.0",
+     "react-addons-test-utils": "^15.0.0-rc.2",
+     "react-dom": "^15.0.2",
+     "phantomjs-prebuilt": "^2.1.7",
+     "rimraf": "^2.5.2",
+     "sinon": "^1.17.3"
+  },
+  "dependencies" :{
+   "normalize.css": "^4.0.0",
+    "enzyme": "^2.8.0",
+    "webpackcc": "^2.0.20",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "cross-env": "^3.1.0"
+  },
+  "entry" :{
+    "index" : "./src/client.js"
   }
 }

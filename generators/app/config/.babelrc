@@ -6,3 +6,26 @@
        "react-hot-loader/babel"
     ]
   }
+
+//   {
+//   "presets": [
+//     ["es2015", { "modules": false }],
+//     "react",
+//     "airbnb"
+//   ],
+//   "plugins": [
+//     "transform-decorators-legacy",
+//     "transform-object-rest-spread",
+//     "react-hot-loader/babel"
+//   ],
+//   "env": {
+//     "test": {
+//       "plugins": [
+//         "transform-decorators-legacy",
+//         "transform-object-rest-spread",
+//         //Detail : https://www.npmjs.com/package/babel-plugin-transform-object-rest-spread
+//         "istanbul"
+//       ]
+//     }
+//   }
+// }
