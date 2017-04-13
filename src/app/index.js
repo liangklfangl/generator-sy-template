@@ -11,7 +11,7 @@ import getWebpackCommonConfig from 'webpackcc/lib/getWebpackDefaultConfig';
 // import mkdirp from "mkdirp";
 // import waterfall from 'async/waterfall'
 import fileUtil from "./utils/util";
-const wcfConfig  = require("./config/wcf.config.json");
+const wcfConfig  = require("./config/wcf.config.js");
 const cwd = process.cwd();
 //package.json of our folder
 const baseRootPath = path.join(path.dirname(require.resolve('react-webpack-template')),"..");

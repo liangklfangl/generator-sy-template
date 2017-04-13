@@ -1,9 +1,13 @@
-'use strict';
+"use strict";
 
 var path = require('path');
+var webpack = require("webpack");
 var srcPath = path.join(__dirname, "../src");
 //Because babel-loader is set in wcf, so configuration below will get ['react-hot-loader','babel-loader']
 module.exports = {
+	plugins: [new webpack.DefinePlugin({
+		'process.env.NODE_ENV': JSON.stringify('production')
+	})],
 	externals: {
 		'jsdom': 'window',
 		'cheerio': 'window',

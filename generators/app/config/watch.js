@@ -3,7 +3,11 @@
 //We use `webpack` to bundle without `watch`
 var path = require('path');
 var srcPath = path.join(__dirname, './../src');
+var webpack = require("webpack");
 module.exports = {
+  plugins: [new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify('production')
+  })],
   module: {
     rules: [] //We use `.babelrc` to support react-hot
   },

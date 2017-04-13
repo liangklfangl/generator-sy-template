@@ -1,8 +1,12 @@
 'use strict';
 
 var path = require('path');
+var webpack = require('webpack');
 var srcPath = path.join(__dirname, './../src');
 module.exports = {
+  plugins: [new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify('production')
+  })],
   module: {
     rules: []
     //We use `.babelrc` to support react-hot but react-hot-loader in webpack config

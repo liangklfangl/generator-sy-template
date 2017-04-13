@@ -54,7 +54,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // import waterfall from 'async/waterfall'
 
 
-var wcfConfig = require("./config/wcf.config.json");
+var wcfConfig = require("./config/wcf.config.js");
 var cwd = process.cwd();
 //package.json of our folder
 var baseRootPath = _path2.default.join(_path2.default.dirname(require.resolve('react-webpack-template')), "..");
