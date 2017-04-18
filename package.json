@@ -5,7 +5,7 @@
   "main": "generators/app/index.js",
   "scripts": {
     "watch": "babel src/app  --out-dir generators/app -w",
-    "component": "babel src/component  --out-dir generators/component -w",
+    "component": "babel src/component/index.js  --out-file generators/component/index.js -w",
     "concurrent": "concurrently \"npm run watch\" \"npm run component\"",
     "delconfig": "rimraf ./generators/app/config/wcf.config.js",
     "copyapp": "npm run delconfig && copyfiles -f ./src/app/config/wcf.config.js ./generators/app/config/",

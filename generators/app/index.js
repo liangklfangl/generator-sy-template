@@ -118,7 +118,7 @@ var AppGenerator = function (_Generators) {
         _this2.config.set('appPath', _this2.appPath);
         _this2.config.set('style', _this2.style);
         _this2.config.set('cssmodules', _this2.cssmodules);
-        // this.config.set('generatedWithVersion', this.generatedWithVersion);
+        //This will be used by sub generator of component to generate less/css file!
         //We save user config 
       });
     }
@@ -162,7 +162,7 @@ var AppGenerator = function (_Generators) {
       //And we also will merge it file using webpack-merge before wcf processing
       this.fs.copy(_path2.default.resolve(__dirname, "./config/webpack.config.js").split(_path2.default.sep).join("/"), this.destinationPath() + "/webpack.config.js");
       this.fs.copy(_path2.default.resolve(__dirname, "./config/index.html").split(_path2.default.sep).join("/"), this.destinationPath() + "/src/index.html");
-      this.fs.copy(_path2.default.resolve(__dirname, "./config/.babelrc").split(_path2.default.sep).join("/"), this.destinationPath() + "/.babelrc");
+      this.fs.copy(_path2.default.resolve(__dirname, "./config/.babelrc.js").split(_path2.default.sep).join("/"), this.destinationPath() + "/.babelrc");
       this.fs.copy(_path2.default.resolve(__dirname, "./config/karma.conf.js").split(_path2.default.sep).join("/"), this.destinationPath() + "/karma.conf.js");
       this.fs.copy(_path2.default.resolve(__dirname, "./config/.eslintrc.js").split(_path2.default.sep).join("/"), this.destinationPath() + "/.eslintrc.js");
       //mkdirp `cfg` and remove config files to it

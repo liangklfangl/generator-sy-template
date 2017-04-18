@@ -64,7 +64,7 @@ class AppGenerator extends Generators {
       this.config.set('appPath', this.appPath);
       this.config.set('style', this.style);
       this.config.set('cssmodules', this.cssmodules);
-      // this.config.set('generatedWithVersion', this.generatedWithVersion);
+      //This will be used by sub generator of component to generate less/css file!
       //We save user config 
     });
   }
@@ -112,7 +112,7 @@ class AppGenerator extends Generators {
     //And we also will merge it file using webpack-merge before wcf processing
     this.fs.copy(path.resolve(__dirname,"./config/webpack.config.js").split(path.sep).join("/"),this.destinationPath()+"/webpack.config.js");
     this.fs.copy(path.resolve(__dirname,"./config/index.html").split(path.sep).join("/"),this.destinationPath()+"/src/index.html");
-    this.fs.copy(path.resolve(__dirname,"./config/.babelrc").split(path.sep).join("/"),this.destinationPath()+"/.babelrc");
+    this.fs.copy(path.resolve(__dirname,"./config/.babelrc.js").split(path.sep).join("/"),this.destinationPath()+"/.babelrc");
     this.fs.copy(path.resolve(__dirname,"./config/karma.conf.js").split(path.sep).join("/"),this.destinationPath()+"/karma.conf.js");
     this.fs.copy(path.resolve(__dirname,"./config/.eslintrc.js").split(path.sep).join("/"),this.destinationPath()+"/.eslintrc.js");
     //mkdirp `cfg` and remove config files to it

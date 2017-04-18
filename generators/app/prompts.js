@@ -27,16 +27,16 @@ module.exports = [{
   //get options of `style` setting
   default: _all2.default.config.getDefaultChoice('style')
   //get default options of `style` setting
-},
+}, {
+  type: 'confirm',
+  name: 'cssmodules',
+  message: 'Enable css module support? See https://github.com/gajus/react-css-modules for further info',
+  default: true
+} //,
 // {
 //   type: 'confirm',
-//   name: 'cssmodules',
-//   message: 'Enable css module support? See https://github.com/gajus/react-css-modules for further info',
-//   default: true
-// },
-{
-  type: 'confirm',
-  name: 'postcss',
-  message: 'Enable postcss?',
-  default: false
-}];
+//   name: 'postcss',
+//   message: 'Enable postcss?',
+//   default: false
+// }
+];

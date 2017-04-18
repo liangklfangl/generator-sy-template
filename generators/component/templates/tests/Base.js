@@ -1,8 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-//JavaScript Testing utilities for React http://airbnb.io/enzyme/
 import <%= component.className %> from '<%= component.webpackPath %>';
-//How can we import our components ?
+
 describe('<<%= component.className %> />', function () {
 
   let component;

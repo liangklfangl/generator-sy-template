@@ -2,6 +2,7 @@ import React from 'react';
 import '<%= style.webpackPath %>';
 
 class <%= component.className %> extends <%= component.classBase %> {
+
   render() {
     return (
       <div className="<%= style.className %>">
